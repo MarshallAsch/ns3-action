@@ -1,4 +1,4 @@
-name: Deploy new docker container
+name: action-deploy
 
 on:
   push:
@@ -7,6 +7,9 @@ on:
 
 jobs:
   docker:
+    strategy:
+      matrix:
+        ns3: [3.32, 3.33]
     runs-on: ubuntu-latest
     environment: deployment
     steps:
@@ -22,14 +25,21 @@ jobs:
       - name: Set output
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-      -
-        name: Build and push
+      - name: Build and push
         uses: docker/build-push-action@v2
         with:
+          build-args: |
+            NS3_VERSION=${{ matrix.ns3 }} 
           context: .
           push: true
           tags: | 
             marshallasch/ns3:${{ steps.vars.outputs.tag }}
             marshallasch/ns3:latest
-            marshallasch/ns3:ns3-3.32
-
+            marshallasch/ns3:ns3-${{ matrix.ns3 }}
+      - name: Copy README to dockerhub
+        uses: ms-jpq/sync-dockerhub-readme@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: marshallasch/ns3
+          readme: "./README.md"
