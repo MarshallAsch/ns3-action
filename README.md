@@ -2,7 +2,8 @@
 ![GitHub](https://img.shields.io/github/license/marshallasch/ns3-action?style=plastic)
 ![Lines of code](https://img.shields.io/tokei/lines/github/marshallasch/ns3-action?style=plastic)
 ![NS3 version](https://img.shields.io/badge/NS--3-3.32-blueviolet?style=plastic)
-
+![Docker Pulls](https://img.shields.io/docker/pulls/marshallasch/ns3?style=plastic)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/marshallasch/ns3/ns3-3.32?style=plastic)
 
 # NS3 CI Checker
 
