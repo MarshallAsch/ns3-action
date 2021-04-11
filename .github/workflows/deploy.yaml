@@ -25,7 +25,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: 
-            - marshallasch/ns3:${{ GITHUB_REF }}
-            - marshallasch/ns3:latest
-            - marshallasch/ns3:ns3-3.32
+          tags: | 
+            marshallasch/ns3:${{ GITHUB_REF }}
+            marshallasch/ns3:latest
+            marshallasch/ns3:ns3-3.32
+
