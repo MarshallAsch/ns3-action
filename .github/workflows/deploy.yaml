@@ -36,10 +36,3 @@ jobs:
             marshallasch/ns3:${{ steps.vars.outputs.tag }}
             marshallasch/ns3:latest
             marshallasch/ns3:ns3-${{ matrix.ns3 }}
-      - name: Copy README to dockerhub
-        uses: ms-jpq/sync-dockerhub-readme@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: marshallasch/ns3
-          readme: "./README.md"
