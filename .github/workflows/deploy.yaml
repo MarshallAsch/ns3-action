@@ -9,7 +9,7 @@ jobs:
   docker:
     strategy:
       matrix:
-        ns3: [3.32, 3.33]
+        ns3: [3.32]
     runs-on: ubuntu-latest
     environment: deployment
     steps:
