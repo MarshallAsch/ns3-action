@@ -84,6 +84,6 @@ jobs:
 
 ## Special Thanks
 
-I would like to acknowledge Dr. Jason Ernst ([@compscidr](https://github.com/compscidr)
+I would like to acknowledge Dr. Jason Ernst ([@compscidr](https://github.com/compscidr))
 who gave me the idea to implement this pipeline stage to help validate that my simulation code
 actually builds. 
