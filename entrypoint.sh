@@ -9,10 +9,10 @@ cd  /ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
 
 
 # run a test simulation to ensure that it runs if a parameter is set
-if [[ -z "$INPUT_SIM_NAME" ]]
+if [[ -z "$INPUT_SIM_ARGS" ]]
 then
-    echo "No simulation name given, not running a sample run"
+    echo "No simulation arguments given, not running a sample run"
 else
-    ./waf --run "scratch/workspace/$INPUT_SIM_NAME $INPUT_SIM_ARGS"
+    ./waf --run "scratch/workspace/workspace $INPUT_SIM_ARGS"
 fi
 
