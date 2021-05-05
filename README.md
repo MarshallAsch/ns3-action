@@ -34,7 +34,7 @@ $ docker built -t marshallasch/ns3 .
 That is all that is needed to build the docker container, you do not need to have the ns3 codebase installed
 because it will download a fresh copy of the `ns3-allinone` version when building the container. 
 
-By default it will build NS3 verion 3.32, as that is the version of the simulator that I am using for my
+By default it will build NS3 version 3.32, as that is the version of the simulator that I am using for my
 research.
 But a different version can be specified:
 
@@ -42,7 +42,7 @@ But a different version can be specified:
 $ docker build --build-arg NS3_VERSION=3.33 marshallasch/ns3 .
 ```
 
-The only potential shortcoming of that is if there are different system dependancyies needed for different
+The only potential shortcoming of that is if there are different system dependencies needed for different
 versions of ns3, although it _should_ be fine.
 
 One thing to note about this container is that it does not support any visualization, python bindings, tests,
@@ -52,14 +52,39 @@ examples, or any extra modules that can not be run from within the `scratch` fol
 
 ### Inputs
 
+
+#### `sim_name`
+
+**optional** The extra options that are passed to the `./waf --run "<simulation name>  <options>"` 
+to test run the simulation. 
+Only specify this if the `location` is being set to something other than `scratch`, 
+otherwise it is ignored.
+
 #### `sim_args`
 
-**Optional** The extra options that are passed to the `./waf --run "simulation <options>"` to test run the
-simulation. 
+**optional** The extra options that are passed to the `./waf --run "<simulation name> <options>"` 
+to test run the simulation. 
 If this input is not set then the `./waf --run "..."` stage is skipped. 
 It is also important to note that this container is not designed to actually run simulations in
 and these arguments should be  selected so that the smallest possible simulation can be run to ensure
 that the code works. 
+
+#### `pre_run`
+
+**optional** A command or script that can be specified to run before the simulation code get compiled or run.
+
+#### `post_run`
+
+**optional** A command or script that can be specified to run before the simulation code get compiled or run. If this is specified then the return value of this script is used.
+
+#### `location`
+
+**optional** The location that the simulation code should be copied.
+This should only be one of `scratch`, `src`, or `contrib`. 
+The value will default to `scratch` if it is not set.
+If it is set to `scratch` then the `sim_name` field is optional, for any other value it is required.
+
+
 
 Also note that there is no output that is collected from this container and it is only used to check
 that 1) the code builds, and 2) that the code runs without crashing. 
@@ -80,6 +105,8 @@ jobs:
     - name: ns3 build
       uses: marshallasch/ns3-action@V0.4
       with:
+        location: 'contrib'
+        sim_name: 'saf-example'
         sim_args: '--run-time=900 --total-nodes=5'
 ```
 

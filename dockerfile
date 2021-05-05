@@ -6,7 +6,7 @@ ENV NS3_VERSION=$NS3_VERSION
 
 WORKDIR /ns3
 
-VOLUME ["/scratch"]
+VOLUME ["/contrib"]
 
 
 RUN apt-get update && apt-get install -y \
@@ -50,9 +50,8 @@ COPY entrypoint.sh /entrypoint.sh
 WORKDIR ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
 
 
-RUN ./waf configure && ./waf build
+RUN ./waf configure --enable-examples --enable-tests && ./waf build
 
 
 
 ENTRYPOINT ["/entrypoint.sh"]
-
