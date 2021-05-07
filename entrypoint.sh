@@ -9,7 +9,6 @@ then
     INPUT_SIM_NAME=scratch/workspace/workspace
 fi
 
-
 # copy all of the files into the scratch folder
 cp -r "$GITHUB_WORKSPACE" /ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}/$INPUT_LOCATION/
 cd  /ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
@@ -20,7 +19,7 @@ then
     res=$?
     if [[ "$res" -ne "0" ]]
     then
-        echo -e "${RED}pre-run script failed, exiting early${ENDCOLOR}"
+        echo -e "${RED}pre-run script failed, exiting early${CLEAR}"
         exit $res
     fi
 fi
@@ -32,10 +31,9 @@ then
     res=$?
     if [[ "$res" -ne "0" ]]
     then
-        echo -e "${RED}waf configuration failed${ENDCOLOR}"
+        echo -e "${RED}waf configuration failed${CLEAR}"
         exit $res
     fi
-
 fi
 
 # test build the app
@@ -44,7 +42,7 @@ fi
 res=$?
 if [[ "$res" -ne "0" ]]
 then
-    echo -e "${RED}waf build was unsuccessfull${ENDCOLOR}"
+    echo -e "${RED}waf build was unsuccessfull${CLEAR}"
     exit $res
 fi
 
@@ -57,7 +55,7 @@ else
     res=$?
     if [[ "$res" -ne "0" ]]
     then
-        echo -e "${RED}Simulation run could not be compleeted successfully${ENDCOLOR}"
+        echo -e "${RED}Simulation run could not be compleeted successfully${CLEAR}"
         exit $res
     fi
 fi
