@@ -1,9 +1,11 @@
 #!/bin/bash
 
 RED="\e[31m"
+GREEN="\e[33m"
+YELLOW="\e[33m"
 CLEAR="\e[0m"
 
-module=$(basename $GITHUB_WORKSPACE)
+module=$(basename $GITHUB_REPOSITORY)
 
 if [[ -z "$INPUT_LOCATION" ]]
 then
