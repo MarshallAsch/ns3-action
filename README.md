@@ -12,19 +12,19 @@ and that a simple simulation can run without crashing.
 
 ## Motivation
 
-The NS3 network simulation platfom is an interesting codebase that is different from most other
-library projects, where instead of including the simulator as a project dependancy the simulation
+The NS3 network simulation platform is an interesting codebase that is different from most other
+library projects, where instead of including the simulator as a project dependency the simulation
 code needs to be written _inside_ of the simulator code.
 This presents some challenges with doing CI/CD testing on the simulation code that is being
 written because you can not check to make sure that the code compiles without also compiling the 
 entire simulator as well.
-This is an extreamly time consuming proccess (the github action to build this container takes about 23
+This is an extremely time consuming process (the github action to build this container takes about 23
 minutes to run), that is no good for a simple "does this compile check", hence this project.
 
 ## Building
 
 This repository is not meant to be built or used on its own, however it can be built manually.
-The only dependancy needed to build this is docker, and more than 2 GB of ram, I think 4GB might be needed
+The only dependency needed to build this is docker, and more than 2 GB of ram, I think 4GB might be needed
 or it will crash part way through. 
 
 ```bash
@@ -71,11 +71,16 @@ that the code works.
 
 #### `pre_run`
 
-**optional** A command or script that can be specified to run before the simulation code get compiled or run.
+**optional** A script that can be specified to run before the simulation code get compiled or run.
+
+Note that this will be run from the NS3 directory, the script directory must be relative to the repository root and should not include a leading '/'
+
 
 #### `post_run`
 
-**optional** A command or script that can be specified to run before the simulation code get compiled or run. If this is specified then the return value of this script is used.
+**optional** A script that can be specified to run before the simulation code get compiled or run. If this is specified then the return value of this script is used.
+
+Note that this will be run from the NS3 directory, the script directory must be relative to the repository root and should not include a leading '/'
 
 #### `location`
 
