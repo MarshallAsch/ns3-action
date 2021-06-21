@@ -55,8 +55,8 @@ then
     exit $res
 fi
 
-# run a test simulation to ensure that it runs if a parameter is set
-if [[ -z "$INPUT_SIM_ARGS" ]]
+# run a test simulation to ensure that it runs
+if [[ -z "$INPUT_SIM_NAME" ]]
 then
     echo "No simulation arguments given, not running a sample run"
 else

@@ -64,7 +64,6 @@ otherwise it is ignored.
 
 **optional** The extra options that are passed to the `./waf --run "<simulation name> <options>"` 
 to test run the simulation. 
-If this input is not set then the `./waf --run "..."` stage is skipped. 
 It is also important to note that this container is not designed to actually run simulations in
 and these arguments should be  selected so that the smallest possible simulation can be run to ensure
 that the code works. 
