@@ -1,9 +1,9 @@
 ![docker deploy on main](https://img.shields.io/github/workflow/status/marshallasch/ns3-action/action-deploy/main?style=plastic)
 ![GitHub](https://img.shields.io/github/license/marshallasch/ns3-action?style=plastic)
 ![Lines of code](https://img.shields.io/tokei/lines/github/marshallasch/ns3-action?style=plastic)
-![ns-3 version](https://img.shields.io/badge/NS--3-3.32-blueviolet?style=plastic)
+![ns-3 version](https://img.shields.io/badge/NS--3-3.34-blueviolet?style=plastic)
 ![Docker Pulls](https://img.shields.io/docker/pulls/marshallasch/ns3?style=plastic)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/marshallasch/ns3/ns3-3.32?style=plastic)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/marshallasch/ns3/34.1?style=plastic)
 
 # ns-3 CI Checker
 
@@ -34,7 +34,7 @@ $ docker built -t marshallasch/ns3 .
 That is all that is needed to build the docker container, you do not need to have the ns3 codebase installed
 because it will download a fresh copy of the `ns3-allinone` version when building the container. 
 
-By default it will build ns-3 version 3.32, as that is the version of the simulator that I am using for my
+By default it will build ns-3 version 3.34, as that is the version of the simulator that I am using for my
 research.
 But a different version can be specified:
 
@@ -107,7 +107,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: ns3 build
-      uses: marshallasch/ns3-action@V0.4
+      uses: marshallasch/ns3-action@3.34.1
       with:
         location: 'contrib'
         sim_name: 'saf-example'

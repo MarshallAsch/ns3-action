@@ -3,13 +3,13 @@ name: action-deploy
 on:
   push:
     tags:
-      - 'V*'
+      - '*'
 
 jobs:
   docker:
     strategy:
       matrix:
-        ns3: [3.32]
+        ns3: [3.34]
     runs-on: ubuntu-latest
     environment: deployment
     steps:
@@ -34,4 +34,4 @@ jobs:
           push: true
           tags: |
             marshallasch/ns3:latest
-            marshallasch/ns3:${{ matrix.ns3 }}-${{ steps.vars.outputs.tag }}
+            marshallasch/ns3:${{ steps.vars.outputs.tag }}

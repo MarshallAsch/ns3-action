@@ -1,6 +1,6 @@
 # action.yml
 name: 'ns-3 compile checker'
-description: 'To check to see if code compile with the ns-3 network simulator version 3.32'
+description: 'To check to see if code compile with the ns-3 network simulator version 3.34'
 author: 'Marshall Asch'
 inputs:
   location:
@@ -20,7 +20,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'docker://marshallasch/ns3:ns3-3.32'
+  image: 'docker://marshallasch/ns3:34.1'
 branding:
   icon: 'radio'
   color: 'purple'
