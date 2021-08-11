@@ -2,13 +2,19 @@
 ![GitHub](https://img.shields.io/github/license/marshallasch/ns3-action?style=plastic)
 ![Lines of code](https://img.shields.io/tokei/lines/github/marshallasch/ns3-action?style=plastic)
 ![NS3 version](https://img.shields.io/badge/NS--3-3.32-blueviolet?style=plastic)
+![NS3 version](https://img.shields.io/badge/NS--3-3.34-blueviolet?style=plastic)
+
 ![Docker Pulls](https://img.shields.io/docker/pulls/marshallasch/ns3?style=plastic)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/marshallasch/ns3/ns3-3.32?style=plastic)
 
 # NS3 CI Checker
 
 This action is used to test [NS3](https://www.nsnam.org/) simulation code to check that it builds
 and that a simple simulation can run without crashing. 
+
+This action can be used to check your code for multiple versions of ns3, currently this will support
+`ns-3.32` and `ns-3.34` (because those are the current ns3 versions that my research lab group is using). 
+If you wish to see a different version of ns3 supported by this action open an issue and Id be happy to add support for it. 
+
 
 ## Motivation
 
@@ -107,7 +113,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: ns3 build
-      uses: marshallasch/ns3-action@V0.4
+      uses: marshallasch/ns3-action@32.1
       with:
         location: 'contrib'
         sim_name: 'saf-example'
