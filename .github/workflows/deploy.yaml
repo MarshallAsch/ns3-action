@@ -29,10 +29,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           build-args: |
-            NS3_VERSION=${{ matrix.ns3 }} 
+            NS3_VERSION=${{ matrix.ns3 }}
           context: .
           push: true
-          tags: | 
-            marshallasch/ns3:${{ steps.vars.outputs.tag }}
+          tags: |
             marshallasch/ns3:latest
-            marshallasch/ns3:ns3-${{ matrix.ns3 }}
+            marshallasch/ns3:${{ matrix.ns3 }}-${{ steps.vars.outputs.tag }}

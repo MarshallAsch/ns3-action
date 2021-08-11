@@ -1,18 +1,18 @@
 ![docker deploy on main](https://img.shields.io/github/workflow/status/marshallasch/ns3-action/action-deploy/main?style=plastic)
 ![GitHub](https://img.shields.io/github/license/marshallasch/ns3-action?style=plastic)
 ![Lines of code](https://img.shields.io/tokei/lines/github/marshallasch/ns3-action?style=plastic)
-![NS3 version](https://img.shields.io/badge/NS--3-3.32-blueviolet?style=plastic)
+![ns-3 version](https://img.shields.io/badge/NS--3-3.32-blueviolet?style=plastic)
 ![Docker Pulls](https://img.shields.io/docker/pulls/marshallasch/ns3?style=plastic)
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/marshallasch/ns3/ns3-3.32?style=plastic)
 
-# NS3 CI Checker
+# ns-3 CI Checker
 
-This action is used to test [NS3](https://www.nsnam.org/) simulation code to check that it builds
+This action is used to test [ns-3](https://www.nsnam.org/) simulation code to check that it builds
 and that a simple simulation can run without crashing. 
 
 ## Motivation
 
-The NS3 network simulation platform is an interesting codebase that is different from most other
+The ns-3 network simulation platform is an interesting codebase that is different from most other
 library projects, where instead of including the simulator as a project dependency the simulation
 code needs to be written _inside_ of the simulator code.
 This presents some challenges with doing CI/CD testing on the simulation code that is being
@@ -34,7 +34,7 @@ $ docker built -t marshallasch/ns3 .
 That is all that is needed to build the docker container, you do not need to have the ns3 codebase installed
 because it will download a fresh copy of the `ns3-allinone` version when building the container. 
 
-By default it will build NS3 version 3.32, as that is the version of the simulator that I am using for my
+By default it will build ns-3 version 3.32, as that is the version of the simulator that I am using for my
 research.
 But a different version can be specified:
 

@@ -1,6 +1,6 @@
 # action.yml
-name: 'NS3-3.32 compile checker'
-description: 'To check to see if code compile with the NS3 network simulator version 3.32'
+name: 'ns-3 compile checker'
+description: 'To check to see if code compile with the ns-3 network simulator version 3.32'
 author: 'Marshall Asch'
 inputs:
   location:
