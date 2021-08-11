@@ -20,7 +20,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'docker://marshallasch/ns3:ns3-3.32'
+  image: 'docker://marshallasch/ns3:32.1'
 branding:
   icon: 'radio'
   color: 'purple'

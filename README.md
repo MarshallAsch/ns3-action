@@ -3,7 +3,7 @@
 ![Lines of code](https://img.shields.io/tokei/lines/github/marshallasch/ns3-action?style=plastic)
 ![ns-3 version](https://img.shields.io/badge/NS--3-3.32-blueviolet?style=plastic)
 ![Docker Pulls](https://img.shields.io/docker/pulls/marshallasch/ns3?style=plastic)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/marshallasch/ns3/ns3-3.32?style=plastic)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/marshallasch/ns3/32.1?style=plastic)
 
 # ns-3 CI Checker
 
@@ -107,7 +107,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: ns3 build
-      uses: marshallasch/ns3-action@V0.4
+      uses: marshallasch/ns3-action@32.1
       with:
         location: 'contrib'
         sim_name: 'saf-example'
