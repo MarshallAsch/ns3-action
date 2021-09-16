@@ -2,14 +2,13 @@ FROM ubuntu:focal
 
 ARG NS3_VERSION=3.32
 ARG DEBIAN_FRONTEND=noninteractive
-ENV NS3_VERSION=$NS3_VERSION
 
 WORKDIR /ns3
 
 VOLUME ["/contrib"]
 
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ \
     python3 \
     python3-dev \
@@ -41,6 +40,7 @@ RUN apt-get update && apt-get install -y \
     libgsl0-dev
 
 
+ENV NS3_VERSION=$NS3_VERSION
 
 RUN wget http://www.nsnam.org/release/ns-allinone-${NS3_VERSION}.tar.bz2 && \
     tar xjf ns-allinone-${NS3_VERSION}.tar.bz2
@@ -49,9 +49,6 @@ COPY entrypoint.sh /entrypoint.sh
 
 WORKDIR ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
 
-
 RUN ./waf configure --enable-examples --enable-tests && ./waf build
 
-
-
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/entrypoint.sh"]
