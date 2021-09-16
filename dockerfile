@@ -7,7 +7,6 @@ WORKDIR /ns3
 
 VOLUME ["/contrib"]
 
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ \
     python3 \
@@ -45,13 +44,10 @@ ENV NS3_VERSION=$NS3_VERSION
 RUN wget http://www.nsnam.org/release/ns-allinone-${NS3_VERSION}.tar.bz2 && \
     tar xjf ns-allinone-${NS3_VERSION}.tar.bz2
 
-
 COPY entrypoint.sh /entrypoint.sh
 
 WORKDIR ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
 
-
 RUN ./waf configure --enable-examples --enable-tests && ./waf build
-
 
 CMD ["/entrypoint.sh"]

@@ -34,4 +34,5 @@ jobs:
           push: true
           tags: |
             marshallasch/ns3:latest
+            marshallasch/ns3:${{ matrix.ns3 }}
             marshallasch/ns3:${{ steps.vars.outputs.tag }}
