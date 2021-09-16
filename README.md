@@ -114,6 +114,19 @@ jobs:
         sim_args: '--run-time=900 --total-nodes=5'
 ```
 
+
+### Running Manually
+
+Sometimes you may want to run your ns-3 code in the container without needing to run it in the pipeline. 
+
+
+```
+docker run --rm -it -v "$(pwd):/contrib:r" marshallasch/ns3:tag bash
+ln -s /contrib contrib/<mymodule>
+./waf configure --enable-tests --enable-examples
+./waf build
+```
+
 ## Special Thanks
 
 I would like to acknowledge Dr. Jason Ernst ([@compscidr](https://github.com/compscidr))
