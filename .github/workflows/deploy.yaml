@@ -1,38 +1,48 @@
-name: action-deploy
+name: Create Docker Container
 
 on:
   push:
-    tags:
-      - 'V*'
-
+    branches:
+      - 'main'
 jobs:
   docker:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        ns3: [3.32]
-    runs-on: ubuntu-latest
-    environment: deployment
+        #profile: ['debug', 'optimized']
+        ns3: [3.32, 3.34]
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v2
-      -
-        name: Login to DockerHub
+      - name: Setup the current date
+        id: prep
+        run: echo "::set-output name=date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: marshallasch/ns3
+          tags: |
+            type=ref,event=branch,suffix=-${{ matrix.ns3 }}
+            type=raw,value=${{ matrix.ns3 }}
+            type=raw,value=ns3-${{ matrix.ns3 }}
+            type=semver,pattern={{version}}-${{ matrix.ns3 }}
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Set output
-        id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-      - name: Build and push
+      -
+        name: Build and push
+        id: docker_build
         uses: docker/build-push-action@v2
         with:
-          build-args: |
-            NS3_VERSION=${{ matrix.ns3 }} 
-          context: .
           push: true
-          tags: | 
-            marshallasch/ns3:${{ steps.vars.outputs.tag }}
-            marshallasch/ns3:latest
-            marshallasch/ns3:ns3-${{ matrix.ns3 }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            BUILD_DATE=${{ steps.date.outputs.date }}
+            GIT_COMMIT=${{ github.sha }}
+            NS3_VERSION=${{ matrix.ns3 }}
