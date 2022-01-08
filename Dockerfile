@@ -1,10 +1,7 @@
 ARG NS3_VERSION=3.32
-ENV NS3_VERSION=$NS3_VERSION
-
 ARG BUILD_PROFILE=debug
-ENV BUILD_PROFILE=$BUILD_PROFILE
 
-FROM marshallasch/ns3:$NS3_VERSION-$BUILD_PROFILE
+FROM marshallasch/ns3:${NS3_VERSION}-${BUILD_PROFILE}
 
 LABEL org.opencontainers.version="v1.0.0"
 LABEL org.opencontainers.image.authors="Marshall Asch <masch@uoguelph.ca> (https://marshallasch.ca)"
@@ -15,6 +12,9 @@ LABEL org.opencontainers.image.licenses="ISC"
 LABEL org.opencontainers.image.title="ns-3 github action docker container"
 LABEL org.opencontainers.image.description="ns-3 docker container for github action pipelines"
 
+
+ENV NS3_VERSION=$NS3_VERSION
+ENV BUILD_PROFILE=$BUILD_PROFILE
 
 VOLUME ["/contrib"]
 
