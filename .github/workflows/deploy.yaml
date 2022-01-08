@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         #profile: ['debug', 'optimized']
-        ns3: [3.32, 3.34, 3.35]
+        ns3: [3.32, 3.33, 3.34, 3.35]
     steps:
       - name: Setup the current date
         id: prep
@@ -19,7 +19,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: marshallasch/ns3
+          images: marshallasch/ns3-action
           tags: |
             type=ref,event=branch,suffix=-${{ matrix.ns3 }}
             type=raw,value=${{ matrix.ns3 }}
