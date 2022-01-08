@@ -1,0 +1,26 @@
+# action.yml
+name: 'ns-3 compile checker'
+description: 'To check to see if code compile with the ns-3 network simulator version 3.33'
+author: 'Marshall Asch'
+inputs:
+  location:
+    description: 'the location to put the simulation code folder, one of `src`, `scratch`, or `contrib`, defaults to scratch'
+    required: false
+  sim_name:
+    description: 'the name of the simulation to run'
+    required: false
+  sim_args:
+    description: 'arguments to run the test simulation with'
+    required: false
+  pre_run:
+    description: 'a script to run before the simulation is run'
+    required: false
+  post_run:
+    description: 'a script to run after the simulation is run'
+    required: false
+runs:
+  using: 'docker'
+  image: 'docker://marshallasch/ns3-action:3.33-9ed7d29'
+branding:
+  icon: 'radio'
+  color: 'purple'
