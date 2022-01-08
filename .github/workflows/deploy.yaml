@@ -21,10 +21,9 @@ jobs:
         with:
           images: marshallasch/ns3-action
           tags: |
-            type=ref,event=branch,suffix=-${{ matrix.ns3 }}
-            type=raw,value=${{ matrix.ns3 }}
+            type=sha,format=short,prefix=${{ matrix.ns3 }}-,suffix=
             type=raw,value=ns3-${{ matrix.ns3 }}
-            type=semver,pattern={{version}}-${{ matrix.ns3 }}
+            type=semver,pattern={{version}},suffix=-${{ matrix.ns3 }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
