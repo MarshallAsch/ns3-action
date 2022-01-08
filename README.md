@@ -1,5 +1,4 @@
-![docker deploy on main](https://img.shields.io/github/workflow/status/marshallasch/ns3-action/action-deploy/main?style=plastic)
-![GitHub](https://img.shields.io/github/license/marshallasch/ns3-action?style=plastic)
+[![Create Docker Container](https://github.com/MarshallAsch/ns3-action/actions/workflows/deploy.yaml/badge.svg)](https://github.com/MarshallAsch/ns3-action/actions/workflows/deploy.yaml)![GitHub](https://img.shields.io/github/license/marshallasch/ns3-action?style=plastic)
 ![Lines of code](https://img.shields.io/tokei/lines/github/marshallasch/ns3-action?style=plastic)
 ![NS3 version](https://img.shields.io/badge/NS--3-3.32-blueviolet?style=plastic)
 ![NS3 version](https://img.shields.io/badge/NS--3-3.33-blueviolet?style=plastic)
