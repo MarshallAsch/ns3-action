@@ -13,9 +13,13 @@ then
     INPUT_SIM_NAME=scratch/$module/$module
 fi
 
+
+export NS3_ROOT=/ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
+export NS3_MODULE=/ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}/$INPUT_LOCATION/$module
+
 # sym link all of the files into the scratch folder
-ln -s $GITHUB_WORKSPACE /ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}/$INPUT_LOCATION/$module
-cd  /ns3/ns-allinone-${NS3_VERSION}/ns-${NS3_VERSION}
+ln -s $GITHUB_WORKSPACE $NS3_MODULE
+cd $NS3_ROOT
 
 if [[ ! -z "$INPUT_PRE_RUN" ]]
 then
@@ -34,7 +38,7 @@ fi
 # only reconfigure if it is in a core location
 if [[ "$INPUT_LOCATION" != "scratch" ]]
 then
-    ./waf configure --enable-tests --enable-examples
+    ./waf configure --enable-tests --enable-examples --build-profile=${BUILD_PROFILE}
     res=$?
     if [[ "$res" -ne "0" ]]
     then
