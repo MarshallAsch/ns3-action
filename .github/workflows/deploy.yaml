@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         #profile: ['debug', 'optimized']
-        ns3: [3.32, 3.34]
+        ns3: [3.32, 3.34, 3.35]
     steps:
       - name: Setup the current date
         id: prep
@@ -44,5 +44,5 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             BUILD_DATE=${{ steps.date.outputs.date }}
-            GIT_COMMIT=${{ github.sha }}
+            VCS_REF=${{ github.sha }}
             NS3_VERSION=${{ matrix.ns3 }}
